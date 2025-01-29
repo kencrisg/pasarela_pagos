@@ -78,12 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Text('Iniciar Sesión'),
               ),
               const SizedBox(height: 8.0),
-              TextButton(
-                onPressed: () {
-                  // Acción para "Olvidé mi contraseña"
-                },
-                child: const Text('¿Olvidaste tu contraseña?'),
-              ),
             ],
           ),
         ),

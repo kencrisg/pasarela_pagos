@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/pages/login/login_screen.dart';
+import 'package:pasarela_app/screens/login/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
