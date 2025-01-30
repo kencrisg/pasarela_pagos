@@ -13,9 +13,7 @@ class AuthService {
       data: {"admin_code": adminCode, "password": password},
     );
 
-    print("✅ Login exitoso");
-
-    
+    //print("✅ Login exitoso");
     final String token = response.data;
 
     //Guardamos el token en Shaared Preferences
@@ -23,7 +21,7 @@ class AuthService {
 
     return true;
   } on DioException catch (e) {
-    print("❌ Error en login: ${e.response?.data ?? e.message}");
+    //print("❌ Error en login: ${e.response?.data ?? e.message}");
     return false;
   }
 }
