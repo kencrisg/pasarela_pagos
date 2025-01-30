@@ -2,14 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  final Dio _dio = Dio(BaseOptions(baseUrl: 'http://10.0.2.2:3000'));
+  //final Dio _dio = Dio(BaseOptions(baseUrl: 'http://10.0.2.2:3000'));
+  final Dio _dio = Dio(BaseOptions(baseUrl: 'http://172.20.142.84:3000'));
 
   ApiService() {
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-        final token = await _getToken();
+        final token = await _getToken();  //Recuperamos el JWT si esq ya existe
         if (token != null) {
-          options.headers['Authorization'] = 'Bearer $token';
+          options.headers['Authorization'] = 'Bearer $token'; //Agregar token a cada request a la apiii
         }
         return handler.next(options);
       },

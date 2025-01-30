@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pasarela_app/api/auth_service.dart';
-import 'package:pasarela_app/screens/home/home_screen.dart';
+import 'package:pasarela_app/screens/admin/home/home_admin_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginAdminScreen extends StatefulWidget {
+  const LoginAdminScreen({super.key});
 
   @override
   LoginScreenState createState() => LoginScreenState();
 }
 
-class LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginAdminScreen> {
   final TextEditingController _adminCodeController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();
@@ -33,9 +33,10 @@ class LoginScreenState extends State<LoginScreen> {
     });
 
     if (success) {
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => HomeAdminScreen()),
+        (route) => false, // Elimina la pila de navegacion
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/screens/login/login_screen.dart';
+import 'package:pasarela_app/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +11,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Davo Pagos Mobil',
+        title: 'Davo Pagos Movíl',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color.fromARGB(255, 108, 53, 202)),
           useMaterial3: true,
         ),
-        home: LoginScreen());
+        home: WelcomeScreen());
   }
 }
