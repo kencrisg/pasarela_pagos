@@ -12,13 +12,23 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // ✅ Logo en la parte superior
+            Image.asset(
+              "assets/DavoPagosLogo.png", // 🔥 Ruta de la imagen
+              width: 150, // ✅ Tamaño del logo
+              height: 150,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(height: 20),
+
+            // ✅ Texto "Escoja su rol"
             const Text(
               "Escoja su rol:",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),
             ),
             const SizedBox(height: 30),
 
-            // Tarjeta para Administrador
+            // ✅ Tarjeta para Administrador
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -45,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Tarjeta para Usuario
+            // ✅ Tarjeta para Usuario
             GestureDetector(
               onTap: () {
                 // Aquí se navega al login de usuario

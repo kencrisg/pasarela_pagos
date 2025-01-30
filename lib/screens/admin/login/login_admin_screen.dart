@@ -39,7 +39,7 @@ class LoginAdminScreenState extends State<LoginAdminScreen> {
       if (success) {
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => HomeAdminScreen()),
+          MaterialPageRoute(builder: (context) => MainAdminScreen()),
           (route) => false,
         );
       } else {
@@ -69,19 +69,23 @@ class LoginAdminScreenState extends State<LoginAdminScreen> {
           children: [
             TextField(
               controller: _adminCodeController,
-              decoration: const InputDecoration(labelText: "Ingrese Código Admin:"),
+              decoration:
+                  const InputDecoration(labelText: "Ingrese Código Admin:"),
             ),
             const SizedBox(height: 10),
-            
+
             //Campo de contraseña con botón de mostrar/ocultar
             TextField(
               controller: _passwordController,
-              obscureText: !_isPasswordVisible, //Cambia la visibilidad del texto
+              obscureText:
+                  !_isPasswordVisible, //Cambia la visibilidad del texto
               decoration: InputDecoration(
                 labelText: "Ingrese Contraseña:",
                 suffixIcon: IconButton(
                   icon: Icon(
-                    _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                    _isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off,
                   ),
                   onPressed: () {
                     setState(() {
@@ -91,12 +95,12 @@ class LoginAdminScreenState extends State<LoginAdminScreen> {
                 ),
               ),
             ),
-            
+
             const SizedBox(height: 20),
             _isLoading
                 ? const CircularProgressIndicator()
                 : ElevatedButton(
-                    onPressed: _login, 
+                    onPressed: _login,
                     child: const Text("Iniciar Sesión"),
                   ),
           ],
