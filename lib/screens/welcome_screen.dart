@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/screens/admin/login/login_admin_screen.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:pasarela_app/screens/login/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -7,76 +8,49 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Davo Pagos")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // ✅ Logo en la parte superior
-            Image.asset(
-              "assets/DavoPagosLogo.png", // 🔥 Ruta de la imagen
-              width: 150, // ✅ Tamaño del logo
-              height: 150,
-              fit: BoxFit.contain,
-            ),
+            // ✅ Logo con animación de caída
+            Image.asset("assets/DavoPagosLogo.png", width: 250, height: 250)
+                .animate()
+                .moveY(begin: -100, end: 0, duration: 800.ms)
+                .fadeIn(duration: 600.ms),
+
             const SizedBox(height: 20),
 
-            // ✅ Texto "Escoja su rol"
-            const Text(
-              "Escoja su rol:",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),
-            ),
-            const SizedBox(height: 30),
+            // ✅ Texto con efecto fade-in
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              child: Text(
+                "¡Bienvenidos a DavoPagos!",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              ),
+            ).animate().fadeIn(duration: 1000.ms, delay: 400.ms),
 
-            // ✅ Tarjeta para Administrador
-            GestureDetector(
-              onTap: () {
+            const SizedBox(height: 50),
+
+            // ✅ Botón con animación de subida
+            ElevatedButton(
+              onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginAdminScreen()),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
                 );
               },
-              child: Card(
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Container(
-                  width: 250,
-                  height: 120,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(20),
-                  child: const Text(
-                    "Administrador",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ),
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                textStyle:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-            ),
-            const SizedBox(height: 20),
-
-            // ✅ Tarjeta para Usuario
-            GestureDetector(
-              onTap: () {
-                // Aquí se navega al login de usuario
-              },
-              child: Card(
-                elevation: 5,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Container(
-                  width: 250,
-                  height: 120,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(20),
-                  child: const Text(
-                    "Usuario",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
+              child: const Text("Iniciar Sesión"),
+            )
+                .animate()
+                .moveY(begin: 50, end: 0, duration: 600.ms, delay: 800.ms)
+                .fadeIn(duration: 600.ms),
           ],
         ),
       ),

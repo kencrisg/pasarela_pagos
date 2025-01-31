@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pasarela_app/api/auth_service.dart';
 import 'package:pasarela_app/screens/admin/home/main_admin_screen.dart';
 
-class LoginAdminScreen extends StatefulWidget {
-  const LoginAdminScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  LoginAdminScreenState createState() => LoginAdminScreenState();
+  LoginScreenState createState() => LoginScreenState();
 }
 
-class LoginAdminScreenState extends State<LoginAdminScreen> {
+class LoginScreenState extends State<LoginScreen> {
   final TextEditingController _adminCodeController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthService _authService = AuthService();

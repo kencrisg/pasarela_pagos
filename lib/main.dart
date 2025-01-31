@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
         title: 'Davo Pagos Movíl',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color.fromARGB(255, 96, 13, 238)),
+              seedColor: const Color.fromARGB(255, 18, 204, 33)),
           useMaterial3: true,
         ),
         home: WelcomeScreen());

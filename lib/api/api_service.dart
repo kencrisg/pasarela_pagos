@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,7 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ApiService {
   //final Dio _dio = Dio(BaseOptions(baseUrl: 'http://10.0.2.2:3000')); //local Host con dispositivos emulados
   //final Dio _dio = Dio(BaseOptions(baseUrl: 'http://172.20.142.84:3000')); //Server UTN
-  final Dio _dio = Dio(BaseOptions(baseUrl: 'https://192.168.190.38:3000')); //Server Deployado
+  final Dio _dio =
+      Dio(BaseOptions(baseUrl: 'https://192.168.1.33:3000')); //LocalHost House
+  //final Dio _dio = Dio(BaseOptions(baseUrl: 'https://192.168.190.38:3000')); //Server Deployado
 
   ApiService() {
     _dio.interceptors.add(InterceptorsWrapper(
