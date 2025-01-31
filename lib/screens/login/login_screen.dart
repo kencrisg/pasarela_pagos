@@ -90,13 +90,13 @@ class LoginScreenState extends State<LoginScreen> {
             children: [
               Image.asset("assets/DavoPagosLogo.png", width: 150, height: 150)
                   .animate()
-                  .fadeIn(duration: 500.ms)
-                  .moveY(begin: -30, end: 0, duration: 500.ms),
+                  .fadeIn(duration: 350.ms)
+                  .moveY(begin: -30, end: 0, duration: 350.ms),
               const SizedBox(height: 20),
               const Text(
                 "Iniciar Sesión",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ).animate().fadeIn(duration: 500.ms, delay: 300.ms),
+              ).animate().fadeIn(duration: 350.ms, delay: 300.ms),
               const SizedBox(height: 20),
               TextField(
                 controller: _emailController,
@@ -109,8 +109,8 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
               )
                   .animate()
-                  .fadeIn(duration: 500.ms, delay: 500.ms)
-                  .moveX(begin: -30, end: 0, duration: 500.ms),
+                  .fadeIn(duration: 350.ms, delay: 500.ms)
+                  .moveX(begin: -30, end: 0, duration: 350.ms),
               const SizedBox(height: 15),
               TextField(
                 controller: _passwordController,
@@ -136,8 +136,8 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
               )
                   .animate()
-                  .fadeIn(duration: 500.ms, delay: 700.ms)
-                  .moveX(begin: 30, end: 0, duration: 500.ms),
+                  .fadeIn(duration: 350.ms, delay: 700.ms)
+                  .moveX(begin: 30, end: 0, duration: 350.ms),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -154,8 +154,8 @@ class LoginScreenState extends State<LoginScreen> {
                 ],
               )
                   .animate()
-                  .fadeIn(duration: 500.ms, delay: 900.ms)
-                  .moveX(begin: -20, end: 0, duration: 500.ms),
+                  .fadeIn(duration: 350.ms, delay: 900.ms)
+                  .moveX(begin: -20, end: 0, duration: 350.ms),
               const SizedBox(height: 20),
               _isLoading
                   ? const CircularProgressIndicator()
@@ -172,8 +172,8 @@ class LoginScreenState extends State<LoginScreen> {
                       child: const Text("Iniciar Sesión"),
                     )
                       .animate()
-                      .fadeIn(duration: 500.ms, delay: 1100.ms)
-                      .moveY(begin: 30, end: 0, duration: 500.ms),
+                      .fadeIn(duration: 350.ms, delay: 600.ms)
+                      .moveY(begin: 30, end: 0, duration: 350.ms),
             ],
           ),
         ),

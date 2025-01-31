@@ -25,8 +25,8 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               Image.asset("assets/DavoPagosLogo.png", width: 250, height: 250)
                   .animate()
-                  .moveY(begin: -100, end: 0, duration: 800.ms)
-                  .fadeIn(duration: 600.ms),
+                  .moveY(begin: -100, end: 0, duration: 350.ms)
+                  .fadeIn(duration: 350.ms),
               const SizedBox(height: 20),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
@@ -35,7 +35,7 @@ class WelcomeScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
-              ).animate().fadeIn(duration: 1000.ms, delay: 400.ms),
+              ).animate().fadeIn(duration: 350.ms, delay: 400.ms),
               const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
@@ -54,8 +54,8 @@ class WelcomeScreen extends StatelessWidget {
                 child: const Text("Iniciar Sesión"),
               )
                   .animate()
-                  .moveY(begin: 50, end: 0, duration: 600.ms, delay: 800.ms)
-                  .fadeIn(duration: 600.ms),
+                  .moveY(begin: 50, end: 0, duration: 350.ms, delay: 800.ms)
+                  .fadeIn(duration: 350.ms),
             ],
           ),
 
@@ -70,8 +70,8 @@ class WelcomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 )
                     .animate()
-                    .fadeIn(duration: 1000.ms, delay: 1000.ms)
-                    .moveY(begin: 20, end: 0, duration: 800.ms, delay: 1200.ms),
+                    .fadeIn(duration: 350.ms, delay: 1000.ms)
+                    .moveY(begin: 20, end: 0, duration: 350.ms, delay: 1200.ms),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -83,8 +83,8 @@ class WelcomeScreen extends StatelessWidget {
                           _launchURL("https://www.tu-pagina-web.com"),
                     )
                         .animate()
-                        .fadeIn(duration: 1000.ms, delay: 1400.ms)
-                        .moveY(begin: 20, end: 0, duration: 800.ms),
+                        .fadeIn(duration: 350.ms, delay: 1400.ms)
+                        .moveY(begin: 20, end: 0, duration: 350.ms),
                     const SizedBox(width: 20),
                     IconButton(
                       icon:
@@ -93,8 +93,8 @@ class WelcomeScreen extends StatelessWidget {
                           _launchURL("https://github.com/tu-repositorio"),
                     )
                         .animate()
-                        .fadeIn(duration: 1000.ms, delay: 1600.ms)
-                        .moveY(begin: 20, end: 0, duration: 800.ms),
+                        .fadeIn(duration: 350.ms, delay: 1600.ms)
+                        .moveY(begin: 20, end: 0, duration: 350.ms),
                   ],
                 ),
               ],
