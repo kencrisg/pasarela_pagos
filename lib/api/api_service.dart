@@ -4,26 +4,25 @@ import 'package:dio/io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  //final Dio _dio = Dio(BaseOptions(baseUrl: 'http://10.0.2.2:3000')); //local Host con dispositivos emulados
-  //final Dio _dio = Dio(BaseOptions(baseUrl: 'http://172.20.142.84:3000')); //Server UTN
-  final Dio _dio =
-      Dio(BaseOptions(baseUrl: 'https://192.168.1.33:3000')); //LocalHost House
-  //final Dio _dio = Dio(BaseOptions(baseUrl: 'https://192.168.190.38:3000')); //Server Deployado
+  final Dio _dio = Dio(BaseOptions(baseUrl: 'https://192.168.1.33:3000'));
 
   ApiService() {
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-        final token = await _getToken(); //Recuperamos el JWT si esq ya existe
+        final token = await _getToken();
         if (token != null) {
           options.headers['Authorization'] =
-              'Bearer $token'; //Agregar token a cada request a la apiii
+              token; // 🔥 Enviar solo el token sin "Bearer "
         }
+
+        print("📤 Enviando petición a: ${options.uri}");
+        print("🔑 Token enviado: ${options.headers['Authorization']}");
+
         return handler.next(options);
       },
       onError: (DioException e, handler) {
-        if (e.response?.statusCode == 401) {
-          print("⚠️ Token inválido o expirado");
-        }
+        print("❌ Error en la petición: ${e.response?.statusCode}");
+        print("🔍 Respuesta del servidor: ${e.response?.data}");
         return handler.next(e);
       },
     ));

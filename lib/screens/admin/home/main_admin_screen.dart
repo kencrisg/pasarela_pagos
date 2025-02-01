@@ -13,18 +13,16 @@ class MainAdminScreen extends StatefulWidget {
 
 class MainAdminScreenState extends State<MainAdminScreen> {
   final AuthService _authService = AuthService();
-  int _currentIndex = 0; // 🔥 Índice de la pantalla actual
+  int _currentIndex = 0;
 
-  // 🔹 Lista de pantallas a mostrar según la selección del Navbar
   final List<Widget> _screens = [
-    UserAdminScreen(), // ✅ Pantalla de Usuarios (inicial)
-    TransactionAdminScreen(), // ✅ Pantalla de Transacciones
+    const UserAdminScreen(),
+    const TransactionAdminScreen(),
   ];
 
   void _logout() async {
     await _authService.logout();
     Navigator.pushAndRemoveUntil(
-      // ignore: use_build_context_synchronously
       context,
       MaterialPageRoute(builder: (context) => const WelcomeScreen()),
       (route) => false,
@@ -40,16 +38,12 @@ class MainAdminScreenState extends State<MainAdminScreen> {
           IconButton(icon: const Icon(Icons.logout), onPressed: _logout),
         ],
       ),
-
-      // 🔹 Muestra la pantalla actual según el _currentIndex
       body: _screens[_currentIndex],
-
-      // 🔹 Navbar Inferior
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index; // 🔥 Cambia la pantalla al tocar un botón
+            _currentIndex = index;
           });
         },
         items: const [
