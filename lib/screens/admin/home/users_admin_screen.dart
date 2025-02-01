@@ -5,10 +5,10 @@ class UserAdminScreen extends StatefulWidget {
   const UserAdminScreen({super.key});
 
   @override
-  _UserAdminScreenState createState() => _UserAdminScreenState();
+  UserAdminScreenState createState() => UserAdminScreenState();
 }
 
-class _UserAdminScreenState extends State<UserAdminScreen> {
+class UserAdminScreenState extends State<UserAdminScreen> {
   final AdminService _adminService = AdminService();
   List<dynamic> _users = [];
   bool _isLoading = true;
