@@ -1,18 +1,19 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class StorageHelper {
-  static Future<String?> getToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('jwt_token');
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
+
+  Future<void> saveToken(String token) async {
+    await _secureStorage.write(key: 'jwt_token', value: token);
   }
 
-  static Future<void> saveToken(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('jwt_token', token);
+  Future<String?> getToken() async {
+    return await _secureStorage.read(key: 'jwt_token');
   }
 
-  static Future<void> removeToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('jwt_token');
+  Future<void> logout() async {
+    await _secureStorage.delete(key: 'jwt_token');
   }
 }
+
+class AuthService {}

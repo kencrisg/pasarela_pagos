@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/api/auth_service.dart';
 import 'package:pasarela_app/screens/admin/home/transaction_admin_screen.dart';
 import 'package:pasarela_app/screens/admin/home/users_admin_screen.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
+import 'package:pasarela_app/utils/storage_helper.dart';
 
 class MainUserScreen extends StatefulWidget {
   const MainUserScreen({super.key});
@@ -12,7 +12,7 @@ class MainUserScreen extends StatefulWidget {
 }
 
 class MainUserScreenState extends State<MainUserScreen> {
-  final AuthService _authService = AuthService();
+  final StorageHelper _storageHelper = StorageHelper();
   int _currentIndex = 0; // 🔥 Índice de la pantalla actual
 
   // 🔹 Lista de pantallas a mostrar según la selección del Navbar
@@ -22,7 +22,7 @@ class MainUserScreenState extends State<MainUserScreen> {
   ];
 
   void _logout() async {
-    await _authService.logout();
+    await _storageHelper.logout();
     Navigator.pushAndRemoveUntil(
       // ignore: use_build_context_synchronously
       context,

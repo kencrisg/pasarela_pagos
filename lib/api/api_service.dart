@@ -1,18 +1,20 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:pasarela_app/utils/storage_helper.dart';
 
 class ApiService {
   final Dio _dio = Dio(BaseOptions(baseUrl: 'https://192.168.1.33:3000'));
+  final StorageHelper _storageHelper = StorageHelper();
 
   ApiService() {
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
-        final token = await _getToken();
+        final token = await _storageHelper.getToken();
         if (token != null) {
-          options.headers['Authorization'] =
-              token; // 🔥 Enviar solo el token sin "Bearer "
+          options.headers['Authorization'] = token;
         }
 
         print("📤 Enviando petición a: ${options.uri}");
@@ -33,11 +35,6 @@ class ApiService {
           (X509Certificate cert, String host, int port) => true;
       return client;
     };
-  }
-
-  Future<String?> _getToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('jwt_token');
   }
 
   Dio get dio => _dio;

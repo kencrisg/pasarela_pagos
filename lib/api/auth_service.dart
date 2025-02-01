@@ -1,9 +1,12 @@
-import 'package:shared_preferences/shared_preferences.dart';
+// ignore_for_file: avoid_print
+
 import 'package:dio/dio.dart';
+import 'package:pasarela_app/utils/storage_helper.dart';
 import 'api_service.dart';
 
 class AuthService {
   final ApiService _apiService = ApiService();
+  final StorageHelper _storageHelper = StorageHelper();
 
   Future<bool> login(String email, String password, String endpoint) async {
     String isAdmin = endpoint == '/auth/login/admin' ? 'admin_code' : 'email';
@@ -16,7 +19,7 @@ class AuthService {
       print("✅ Login exitoso");
 
       final String token = response.data;
-      await _saveToken(token);
+      await _storageHelper.saveToken(token);
 
       return true;
     } on DioException catch (e) {
@@ -24,26 +27,10 @@ class AuthService {
       return false;
     }
   }
-
-  Future<void> logout() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('jwt_token');
-    print("✅ Sesión cerrada correctamente");
-  }
-
-  Future<void> _saveToken(String token) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('jwt_token', token);
-    print("🔒 Token guardado correctamente");
-  }
-
-  Future<String?> getToken() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('jwt_token');
-  }
+  
 
   Future<bool> isLoggedIn() async {
-    final token = await getToken();
+    final token = await _storageHelper.getToken();
     return token != null;
   }
 }

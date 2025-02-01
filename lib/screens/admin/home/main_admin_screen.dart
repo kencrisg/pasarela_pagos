@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/api/auth_service.dart';
 import 'package:pasarela_app/screens/admin/home/transaction_admin_screen.dart';
 import 'package:pasarela_app/screens/admin/home/users_admin_screen.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
+import 'package:pasarela_app/utils/storage_helper.dart';
 
 class MainAdminScreen extends StatefulWidget {
   const MainAdminScreen({super.key});
@@ -12,7 +12,7 @@ class MainAdminScreen extends StatefulWidget {
 }
 
 class MainAdminScreenState extends State<MainAdminScreen> {
-  final AuthService _authService = AuthService();
+  final StorageHelper _storageHelper = StorageHelper();
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
@@ -21,7 +21,7 @@ class MainAdminScreenState extends State<MainAdminScreen> {
   ];
 
   void _logout() async {
-    await _authService.logout();
+    await _storageHelper.logout();
     Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => const WelcomeScreen()),
