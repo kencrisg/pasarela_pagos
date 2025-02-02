@@ -53,7 +53,7 @@ class LoginScreenState extends State<LoginScreen> {
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Credenciales incorrectas")),
+          const SnackBar(content: Text(" Error: ❌ Credenciales incorrectas")),
         );
       }
     } catch (e) {

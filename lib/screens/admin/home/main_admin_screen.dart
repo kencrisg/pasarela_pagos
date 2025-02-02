@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/screens/admin/home/users_admin_screen.dart';
+import 'package:pasarela_app/screens/admin/widgets/users_admin_screen.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
 import 'package:pasarela_app/utils/storage_helper.dart';
 
@@ -13,11 +13,27 @@ class MainAdminScreen extends StatefulWidget {
 class MainAdminScreenState extends State<MainAdminScreen> {
   final StorageHelper _storageHelper = StorageHelper();
 
+  Map<String, dynamic>? userData; 
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final data = await _storageHelper.getUserData();
+
+    if (!mounted) return;
+
+    setState(() {
+      userData = data?['user'];
+    });
+  }
+
   void _logout() async {
     await _storageHelper.logout();
-    if (!mounted) {
-      return;
-    }
+    if (!mounted) return;
 
     Navigator.pushAndRemoveUntil(
       context,
@@ -30,29 +46,56 @@ class MainAdminScreenState extends State<MainAdminScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Panel Administrador"),
+        title: Text(userData != null
+            ? "Bienvenido, ${userData!['name']}"
+            : "Panel Administrador"),
         actions: [
-          IconButton(icon: const Icon(Icons.logout), onPressed: _logout),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () => _showLogoutConfirmationDialog(
+                context), // 🔥 Muestra el diálogo de confirmación
+          ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Title(
-              color: Colors.black,
-              child: const Text(
-                'Clientes',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-              ),
+      body: Column(
+        children: [
+          const SizedBox(height: 16), // Espaciado superior
+          const Text(
+            'Lista de Clientes',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+          ),
+          Expanded(
+            child: UserAdminScreen(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showLogoutConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Confirmar Cierre de Sesión"),
+          content: const Text("¿Desea cerrar sesión?"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context), // 
+              child: const Text("Cancelar"),
             ),
-            SizedBox(
-              height:
-                  MediaQuery.of(context).size.height * 0.8, // 🔥 Ajusta altura
-              child: const UserAdminScreen(),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(
+                    context); // 
+                _logout(); // 
+              },
+              child: const Text("Cerrar Sesión",
+                  style: TextStyle(color: Colors.red)),
             ),
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 }

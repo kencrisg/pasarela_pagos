@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
+  
 
   // Función para abrir URLs
   void _launchURL(String url) async {
@@ -35,7 +36,7 @@ class WelcomeScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
-              ).animate().fadeIn(duration: 350.ms, delay: 400.ms),
+              ).animate().fadeIn(duration: 350.ms, delay: 300.ms),
               const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
@@ -54,7 +55,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: const Text("Iniciar Sesión"),
               )
                   .animate()
-                  .moveY(begin: 50, end: 0, duration: 350.ms, delay: 800.ms)
+                  .moveY(begin: 50, end: 0, duration: 350.ms, delay: 600.ms)
                   .fadeIn(duration: 350.ms),
             ],
           ),
@@ -71,7 +72,7 @@ class WelcomeScreen extends StatelessWidget {
                 )
                     .animate()
                     .fadeIn(duration: 350.ms, delay: 1000.ms)
-                    .moveY(begin: 20, end: 0, duration: 350.ms, delay: 1200.ms),
+                    .moveY(begin: 20, end: 0, duration: 350.ms, delay: 600.ms),
                 const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -83,7 +84,7 @@ class WelcomeScreen extends StatelessWidget {
                           _launchURL("https://www.tu-pagina-web.com"),
                     )
                         .animate()
-                        .fadeIn(duration: 350.ms, delay: 1400.ms)
+                        .fadeIn(duration: 350.ms, delay: 600.ms)
                         .moveY(begin: 20, end: 0, duration: 350.ms),
                     const SizedBox(width: 20),
                     IconButton(
@@ -93,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
                           _launchURL("https://github.com/tu-repositorio"),
                     )
                         .animate()
-                        .fadeIn(duration: 350.ms, delay: 1600.ms)
+                        .fadeIn(duration: 350.ms, delay: 600.ms)
                         .moveY(begin: 20, end: 0, duration: 350.ms),
                   ],
                 ),

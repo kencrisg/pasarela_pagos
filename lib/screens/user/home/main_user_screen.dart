@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/screens/admin/home/transaction_admin_screen.dart';
-import 'package:pasarela_app/screens/admin/home/users_admin_screen.dart';
+import 'package:pasarela_app/screens/admin/widgets/transaction_admin_screen.dart';
+import 'package:pasarela_app/screens/admin/widgets/users_admin_screen.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
 import 'package:pasarela_app/utils/storage_helper.dart';
 
