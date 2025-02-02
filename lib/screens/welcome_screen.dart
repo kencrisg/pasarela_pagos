@@ -109,7 +109,7 @@ class WelcomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Davo Pagos"),
+        title: const Text("DavoPagos"),
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),

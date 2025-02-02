@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pasarela_app/api/admin_service.dart';
 
 class UserTransactionsScreen extends StatefulWidget {
-  final int userId; // 🔹 Recibe el ID del usuario seleccionado
+  final int userId; 
 
   const UserTransactionsScreen({super.key, required this.userId});
 

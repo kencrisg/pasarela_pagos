@@ -154,7 +154,7 @@ class LoginScreenState extends State<LoginScreen> {
                         });
                       },
                     ),
-                    const Text("¿Eres Administrador?"),
+                    const Text("Modo Administrador"),
                   ],
                 )
                     .animate()
