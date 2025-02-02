@@ -27,10 +27,7 @@ class MainUserScreenState extends State<MainUserScreen> {
     final data = await _storageHelper.getUserData();
 
     await Future.delayed(const Duration(milliseconds: 500));
-
-    print("😢$data");
     if (!mounted) return;
-
     setState(() {
       userData = data;
       userId = data?['user']?['user_id'] ?? 0;

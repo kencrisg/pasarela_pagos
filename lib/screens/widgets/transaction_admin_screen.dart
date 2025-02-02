@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pasarela_app/api/admin_service.dart';
 
 class UserTransactionsScreen extends StatefulWidget {
-  final int userId; 
+  final int userId;
 
   const UserTransactionsScreen({super.key, required this.userId});
 
@@ -45,7 +45,28 @@ class UserTransactionsScreenState extends State<UserTransactionsScreen> {
         child: _isLoading
             ? const Center(child: CircularProgressIndicator())
             : _transactions.isEmpty
-                ? const Center(child: Text("No hay transacciones disponibles"))
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "No hay transacciones disponibles",
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton.icon(
+                          onPressed:
+                              _fetchTransactions, // 🔥 Llama al método de actualización
+                          icon: const Icon(Icons.refresh),
+                          label: const Text("Actualizar"),
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 12),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 : ListView.builder(
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemCount: _transactions.length,
@@ -53,9 +74,11 @@ class UserTransactionsScreenState extends State<UserTransactionsScreen> {
                       final transaction = _transactions[index];
                       return Card(
                         elevation: 3,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
                         child: ListTile(
-                          leading: const Icon(Icons.attach_money, size: 30, color: Colors.green),
+                          leading: const Icon(Icons.attach_money,
+                              size: 30, color: Colors.green),
                           title: Text("Monto: \$${transaction['amount']}"),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

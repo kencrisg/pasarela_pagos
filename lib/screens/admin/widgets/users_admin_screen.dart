@@ -42,7 +42,28 @@ class UserAdminScreenState extends State<UserAdminScreen> {
       child: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _users.isEmpty
-              ? const Center(child: Text("No hay usuarios disponibles"))
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "No hay usuarios disponibles",
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton.icon(
+                        onPressed:
+                            _fetchUsers, // 🔥 Llama al método de actualización
+                        icon: const Icon(Icons.refresh),
+                        label: const Text("Actualizar"),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 12),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               : ListView.builder(
                   physics: const AlwaysScrollableScrollPhysics(),
                   itemCount: _users.length,

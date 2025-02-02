@@ -32,7 +32,7 @@ class SettingsScreenState extends State<SettingsScreen> {
       _selectedTheme = themeMode;
     });
     await ThemeHelper.saveThemeMode(themeMode);
-    widget.changeTheme(themeMode); // 🔥 Aplicar cambio de tema en toda la app
+    widget.changeTheme(themeMode); 
   }
 
   @override

@@ -6,7 +6,6 @@ import 'package:url_launcher/url_launcher.dart';
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
-  // Función para abrir URLs
   void _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
@@ -16,7 +15,6 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Definir la parte izquierda: el logo
     final Widget leftPart = Center(
       child: Image.asset("assets/DavoPagosLogo.png", width: 250, height: 250)
           .animate()
@@ -24,7 +22,6 @@ class WelcomeScreen extends StatelessWidget {
           .fadeIn(duration: 350.ms),
     );
 
-    // Definir el contenido principal (mensaje y botón)
     final Widget contentPart = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -62,8 +59,6 @@ class WelcomeScreen extends StatelessWidget {
             .fadeIn(duration: 350.ms),
       ],
     );
-
-    // Definir el footer
     final Widget footer = Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -144,7 +139,6 @@ class WelcomeScreen extends StatelessWidget {
           } else {
             return ConstrainedBox(
               constraints: BoxConstraints(
-                // Se establece una altura mínima igual a la altura disponible (restando AppBar y padding)
                 minHeight: MediaQuery.of(context).size.height -
                     kToolbarHeight -
                     MediaQuery.of(context).padding.top,
@@ -156,7 +150,6 @@ class WelcomeScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Parte superior: logo y contenido principal
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -165,7 +158,6 @@ class WelcomeScreen extends StatelessWidget {
                           contentPart,
                         ],
                       ),
-                      // Footer al final, sin dejar un espacio excesivo
                       footer,
                     ],
                   ),

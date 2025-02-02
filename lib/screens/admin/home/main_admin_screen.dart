@@ -26,7 +26,6 @@ class MainAdminScreenState extends State<MainAdminScreen> {
 
     setState(() {
       userData = data;
-      print("😢$userData");
     });
   }
 

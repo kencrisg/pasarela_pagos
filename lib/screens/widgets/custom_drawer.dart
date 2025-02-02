@@ -30,7 +30,7 @@ class CustomDrawer extends StatelessWidget {
                   height: 100,
                 ),
                 Text(
-                  userName, // 🔥 Ahora funciona para admin y usuario
+                  userName,
                   style: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ],
