@@ -16,10 +16,6 @@ class ApiService {
         if (token != null) {
           options.headers['Authorization'] = token;
         }
-
-        print("📤 Enviando petición a: ${options.uri}");
-        print("🔑 Token enviado: ${options.headers['Authorization']}");
-
         return handler.next(options);
       },
       onError: (DioException e, handler) {

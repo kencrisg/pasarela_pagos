@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
+import 'package:pasarela_app/screens/widgets/custom_drawer.dart';
 import 'package:pasarela_app/screens/widgets/transaction_admin_screen.dart';
 import 'package:pasarela_app/utils/storage_helper.dart';
-import 'package:pasarela_app/screens/widgets/logout_dialog.dart';
 
 class MainUserScreen extends StatefulWidget {
   const MainUserScreen({super.key});
@@ -28,6 +28,7 @@ class MainUserScreenState extends State<MainUserScreen> {
 
     await Future.delayed(const Duration(milliseconds: 500));
 
+    print("😢$data");
     if (!mounted) return;
 
     setState(() {
@@ -56,54 +57,9 @@ class MainUserScreenState extends State<MainUserScreen> {
             ? "Bienvenido, ${userData!['user']['name']}"
             : "Panel Usuario"),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context)
-                    .colorScheme
-                    .secondary, // Puedes personalizar el fondo
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    "assets/DavoPagosLogo.png",
-                    width: 100,
-                    height: 100,
-                  ),
-                  Text(
-                    userData?['user']?['name'] ?? "Usuario",
-                    style: const TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text("Configuraciones"),
-              onTap: () {
-                Navigator.pop(context); // cierra el Drawer
-                Navigator.pushNamed(context, '/settings');
-              },
-            ),
-            ListTile(
-              leading: const Icon(
-                Icons.logout,
-                color: Colors.red,
-              ),
-              title: const Text(
-                "Cerrar Sesión",
-                style: TextStyle(color: Colors.red),
-              ),
-              onTap: () {
-                LogoutDialog.show(context, _logout);
-              },
-            ),
-          ],
-        ),
+      drawer: CustomDrawer(
+        userData: userData,
+        onLogout: _logout,
       ),
       body: _isUserDataLoaded
           ? (userId != 0

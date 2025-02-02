@@ -23,8 +23,10 @@ class MainAdminScreenState extends State<MainAdminScreen> {
 
   Future<void> _loadUserData() async {
     final data = await _storageHelper.getUserData();
+
     setState(() {
       userData = data;
+      print("😢$userData");
     });
   }
 
@@ -41,20 +43,15 @@ class MainAdminScreenState extends State<MainAdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Se agrega un Drawer en el Scaffold
       drawer: CustomDrawer(
         userData: userData,
-        onLogout: _logout, // 🔥 Pasa la función de logout al Drawer
+        onLogout: _logout,
       ),
       appBar: AppBar(
-        // El leading se reemplaza por el ícono de menú automáticamente cuando se define un Drawer.
         title: Text(userData != null
             ? "Bienvenido, ${userData!['name']}"
             : "Panel Administrador"),
-        actions: [
-          // Opcional: puedes mantener el botón de logout aquí o quitarlo si ya está en el Drawer.
-          // En este ejemplo, se quita para evitar duplicidad.
-        ],
+        actions: [],
       ),
       body: Column(
         children: [

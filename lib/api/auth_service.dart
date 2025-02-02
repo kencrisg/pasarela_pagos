@@ -28,7 +28,6 @@ class AuthService {
     }
   }
   
-
   Future<bool> isLoggedIn() async {
     final token = await _storageHelper.getToken();
     return token != null;

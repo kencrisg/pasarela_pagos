@@ -20,5 +20,16 @@ class JWTHelper {
     }
   }
 
+  static String getUserName(Map<String, dynamic>? data) {
+    if (data == null) return "Usuario";
 
+    if (data.containsKey('user')) {
+      return data['user']?['name'] ?? "Usuario";
+    }
+    return data['name'] ?? "Administrador";
+  }
+
+  static bool isAdmin(Map<String, dynamic>? data) {
+    return data != null && data.containsKey('admin_id');
+  }
 }
