@@ -13,7 +13,7 @@ class MainAdminScreen extends StatefulWidget {
 class MainAdminScreenState extends State<MainAdminScreen> {
   final StorageHelper _storageHelper = StorageHelper();
 
-  Map<String, dynamic>? userData; 
+  Map<String, dynamic>? userData;
 
   @override
   void initState() {
@@ -23,11 +23,8 @@ class MainAdminScreenState extends State<MainAdminScreen> {
 
   Future<void> _loadUserData() async {
     final data = await _storageHelper.getUserData();
-
-    if (!mounted) return;
-
     setState(() {
-      userData = data?['user'];
+      userData = data;
     });
   }
 
@@ -46,6 +43,8 @@ class MainAdminScreenState extends State<MainAdminScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading:
+            Image.asset("assets/DavoPagosLogo.png", width: 100, height: 100),
         title: Text(userData != null
             ? "Bienvenido, ${userData!['name']}"
             : "Panel Administrador"),
@@ -81,14 +80,13 @@ class MainAdminScreenState extends State<MainAdminScreen> {
           content: const Text("¿Desea cerrar sesión?"),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context), // 
+              onPressed: () => Navigator.pop(context), //
               child: const Text("Cancelar"),
             ),
             TextButton(
               onPressed: () {
-                Navigator.pop(
-                    context); // 
-                _logout(); // 
+                Navigator.pop(context); //
+                _logout(); //
               },
               child: const Text("Cerrar Sesión",
                   style: TextStyle(color: Colors.red)),

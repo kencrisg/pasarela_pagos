@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pasarela_app/screens/admin/widgets/transaction_admin_screen.dart';
+import 'package:pasarela_app/screens/widgets/transaction_admin_screen.dart';
 import 'package:pasarela_app/screens/admin/widgets/users_admin_screen.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
 import 'package:pasarela_app/utils/storage_helper.dart';
@@ -18,7 +18,6 @@ class MainUserScreenState extends State<MainUserScreen> {
   // 🔹 Lista de pantallas a mostrar según la selección del Navbar
   final List<Widget> _screens = [
     UserAdminScreen(), //Pantalla de Usuarios (inicial)
-    TransactionAdminScreen(), //Pantalla de Transacciones
   ];
 
   void _logout() async {
