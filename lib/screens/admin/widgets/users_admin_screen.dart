@@ -59,12 +59,12 @@ class UserAdminScreenState extends State<UserAdminScreen> {
                         );
                       },
                       child: Card(
-                        elevation: 4,
+                        elevation: 6,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(18.0),
                           child: Row(
                             children: [
                               Expanded(
@@ -73,22 +73,28 @@ class UserAdminScreenState extends State<UserAdminScreen> {
                                   children: [
                                     Text("ID: ${user['user_id']}",
                                         style: const TextStyle(
+                                            fontSize: 16,
                                             fontWeight: FontWeight.bold)),
-                                    Text("Nombre: ${user['name']}"),
-                                    Text("Correo: ${user['email']}"),
+                                    Text("Nombre: ${user['name']}",
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                        )),
+                                    Text("Correo: ${user['email']}",
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                        )),
                                     Text("API Token: ${user['api_token']}",
                                         style: const TextStyle(
-                                            fontSize: 12, color: Colors.grey)),
+                                            fontSize: 14, color: Colors.grey)),
                                   ],
                                 ),
                               ),
                               Align(
-                                // 🔹 Alinea el icono en el centro verticalmente
                                 alignment: Alignment.centerRight,
                                 child: Icon(
                                   Icons.person,
                                   size: 40,
-                                  color: Theme.of(context).primaryColor,
+                                  color: Theme.of(context).colorScheme.primary,
                                 ),
                               ),
                             ],
