@@ -15,7 +15,6 @@ class JWTHelper {
           utf8.decode(base64Url.decode(base64Url.normalize(parts[1])));
       return json.decode(payload);
     } catch (e) {
-      print("❌ Error al decodificar el token: $e");
       return null;
     }
   }
@@ -26,7 +25,7 @@ class JWTHelper {
     if (data.containsKey('user')) {
       return data['user']?['name'] ?? "Usuario";
     }
-    return data['name'] ?? "Administrador";
+    return data['admin']?['name'] ?? "Administrador";
   }
 
   static bool isAdmin(Map<String, dynamic>? data) {

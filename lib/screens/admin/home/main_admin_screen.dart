@@ -48,7 +48,7 @@ class MainAdminScreenState extends State<MainAdminScreen> {
       ),
       appBar: AppBar(
         title: Text(userData != null
-            ? "Bienvenido, ${userData!['name']}"
+            ? "Bienvenido, ${userData!['admin']['name']}"
             : "Panel Administrador"),
         actions: [],
       ),
