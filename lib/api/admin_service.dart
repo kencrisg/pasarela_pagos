@@ -26,4 +26,14 @@ class AdminService {
       return [];
     }
   }
+
+  Future<List<dynamic>> getTransactions() async {
+    try {
+      final response = await _apiService.dio.get('/transaction');
+      return response.data;
+    } on DioException catch (e) {
+      print("❌ Error al obtener transacciones: ${e.message}");
+      return [];
+    }
+  }
 }

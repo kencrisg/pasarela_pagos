@@ -6,7 +6,7 @@ import 'package:dio/io.dart';
 import 'package:pasarela_app/utils/storage_helper.dart';
 
 class ApiService {
-  final Dio _dio = Dio(BaseOptions(baseUrl: 'https://192.168.1.33:3000'));
+  final Dio _dio = Dio(BaseOptions(baseUrl: 'https://172.20.10.3:3000'));
   final StorageHelper _storageHelper = StorageHelper();
 
   ApiService() {

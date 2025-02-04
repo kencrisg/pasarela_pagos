@@ -84,7 +84,14 @@ class UserTransactionsScreenState extends State<UserTransactionsScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("Fecha: ${transaction['creation_date']}"),
-                              Text("Estado: ${transaction['status']}"),
+                              Text(
+                                "Estado: ${transaction['status']}",
+                                style: TextStyle(
+                                  color: getStatusColor(transaction['status']),
+                                  fontWeight: FontWeight
+                                      .bold, // Opcional para resaltar el texto
+                                ),
+                              ),
                               Text("Orden ID: ${transaction['order_id']}"),
                             ],
                           ),
@@ -94,5 +101,18 @@ class UserTransactionsScreenState extends State<UserTransactionsScreen> {
                   ),
       ),
     );
+  }
+
+  Color getStatusColor(String status) {
+    switch (status.toLowerCase()) {
+      case 'approved':
+        return Colors.green;
+      case 'failure':
+        return Colors.red;
+      case 'pending':
+        return Colors.amber;
+      default:
+        return Colors.grey;
+    }
   }
 }

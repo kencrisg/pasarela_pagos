@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pasarela_app/screens/admin/widgets/users_admin_screen.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
 import 'package:pasarela_app/screens/widgets/custom_drawer.dart';
+import 'package:pasarela_app/screens/admin/widgets/report_admin_screen.dart'; // 🔥 Importa la pantalla de reportes
 import 'package:pasarela_app/utils/storage_helper.dart';
 
 class MainAdminScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class MainAdminScreen extends StatefulWidget {
 class MainAdminScreenState extends State<MainAdminScreen> {
   final StorageHelper _storageHelper = StorageHelper();
   Map<String, dynamic>? userData;
+  int _currentIndex = 0; // 🔥 Índice del Bottom Navigation
 
   @override
   void initState() {
@@ -23,7 +25,6 @@ class MainAdminScreenState extends State<MainAdminScreen> {
 
   Future<void> _loadUserData() async {
     final data = await _storageHelper.getUserData();
-
     setState(() {
       userData = data;
     });
@@ -41,6 +42,11 @@ class MainAdminScreenState extends State<MainAdminScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> screens = [
+      const UserAdminScreen(),
+      const ReportAdminScreen(), 
+    ];
+
     return Scaffold(
       drawer: CustomDrawer(
         userData: userData,
@@ -50,17 +56,24 @@ class MainAdminScreenState extends State<MainAdminScreen> {
         title: Text(userData != null
             ? "Bienvenido, ${userData!['admin']['name']}"
             : "Panel Administrador"),
-        actions: [],
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 16),
-          const Text(
-            'Lista de Clientes',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+      body: screens[_currentIndex],
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index; 
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Usuarios',
           ),
-          Expanded(
-            child: UserAdminScreen(),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.analytics),
+            label: 'Reportes',
           ),
         ],
       ),
