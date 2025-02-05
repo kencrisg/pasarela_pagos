@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pasarela_app/screens/admin/widgets/report_main_screen.dart';
 import 'package:pasarela_app/screens/admin/widgets/users_admin_screen.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
 import 'package:pasarela_app/screens/widgets/custom_drawer.dart';
-import 'package:pasarela_app/screens/admin/widgets/report_admin_screen.dart'; // 🔥 Importa la pantalla de reportes
 import 'package:pasarela_app/utils/storage_helper.dart';
 
 class MainAdminScreen extends StatefulWidget {
@@ -44,7 +44,7 @@ class MainAdminScreenState extends State<MainAdminScreen> {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       const UserAdminScreen(),
-      const ReportAdminScreen(), 
+      const ReportMainScreen(),
     ];
 
     return Scaffold(
@@ -58,12 +58,11 @@ class MainAdminScreenState extends State<MainAdminScreen> {
             : "Panel Administrador"),
       ),
       body: screens[_currentIndex],
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index; 
+            _currentIndex = index;
           });
         },
         items: const [

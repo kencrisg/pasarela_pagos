@@ -52,8 +52,7 @@ class UserAdminScreenState extends State<UserAdminScreen> {
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton.icon(
-                        onPressed:
-                            _fetchUsers, // 🔥 Llama al método de actualización
+                        onPressed: _fetchUsers,
                         icon: const Icon(Icons.refresh),
                         label: const Text("Actualizar"),
                         style: ElevatedButton.styleFrom(

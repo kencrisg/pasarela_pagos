@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pasarela_app/utils/theme_helper.dart';
 import 'package:pasarela_app/screens/welcome_screen.dart';
 import 'package:pasarela_app/screens/settings/settings_screen.dart';
-import 'package:pasarela_app/themes/color_theme.dart'; // 🔥 Importamos los temas
+import 'package:pasarela_app/themes/color_theme.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

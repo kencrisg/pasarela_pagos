@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:pasarela_app/api/admin_service.dart';
 
-class ReportAdminScreen extends StatefulWidget {
-  const ReportAdminScreen({super.key});
+class ReportTransactionScreen extends StatefulWidget {
+  const ReportTransactionScreen({super.key});
 
   @override
-  ReportAdminScreenState createState() => ReportAdminScreenState();
+  ReportTransactionScreenState createState() => ReportTransactionScreenState();
 }
 
-class ReportAdminScreenState extends State<ReportAdminScreen> {
+class ReportTransactionScreenState extends State<ReportTransactionScreen> {
   final AdminService _adminService = AdminService();
   bool _isLoading = true;
   int approvedCount = 0;
@@ -39,7 +39,6 @@ class ReportAdminScreenState extends State<ReportAdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Reporte de Transacciones")),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Padding(
