@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pasarela_app/screens/widgets/logout_dialog.dart';
-import 'package:pasarela_app/utils/jwt_helper.dart'; // Importamos el helper
+import 'package:pasarela_app/utils/jwt_helper.dart';
 
 class CustomDrawer extends StatelessWidget {
   final Map<String, dynamic>? userData;

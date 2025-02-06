@@ -15,7 +15,7 @@ class MainAdminScreen extends StatefulWidget {
 class MainAdminScreenState extends State<MainAdminScreen> {
   final StorageHelper _storageHelper = StorageHelper();
   Map<String, dynamic>? userData;
-  int _currentIndex = 0; // 🔥 Índice del Bottom Navigation
+  int _currentIndex = 0;
 
   @override
   void initState() {

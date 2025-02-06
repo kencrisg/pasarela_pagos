@@ -13,7 +13,6 @@ class ThemeHelper {
     final prefs = await SharedPreferences.getInstance();
     int? themeIndex = prefs.getInt(_themeKey);
 
-    // ✅ Si `themeIndex` es `null`, devolver `ThemeMode.system`
     return themeIndex != null ? ThemeMode.values[themeIndex] : ThemeMode.system;
   }
 }

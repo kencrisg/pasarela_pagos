@@ -8,7 +8,7 @@ class JWTHelper {
     try {
       final parts = token.split('.');
       if (parts.length != 3) {
-        return null; // No es un JWT válido
+        return null;
       }
 
       final payload =

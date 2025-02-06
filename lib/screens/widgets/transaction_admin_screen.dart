@@ -56,7 +56,7 @@ class UserTransactionsScreenState extends State<UserTransactionsScreen> {
                         const SizedBox(height: 20),
                         ElevatedButton.icon(
                           onPressed:
-                              _fetchTransactions, // 🔥 Llama al método de actualización
+                              _fetchTransactions,
                           icon: const Icon(Icons.refresh),
                           label: const Text("Actualizar"),
                           style: ElevatedButton.styleFrom(
@@ -89,7 +89,7 @@ class UserTransactionsScreenState extends State<UserTransactionsScreen> {
                                 style: TextStyle(
                                   color: getStatusColor(transaction['status']),
                                   fontWeight: FontWeight
-                                      .bold, // Opcional para resaltar el texto
+                                      .bold,
                                 ),
                               ),
                               Text("Orden ID: ${transaction['order_id']}"),
